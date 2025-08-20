@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  db:
+    image: rohittp0/pg-vector
+    environment:
+    - POSTGRES_USER=user
+    - POSTGRES_PASSWORD=user
+    - POSTGRES_DB=postgres_local
+    ports:
+    - '127.0.0.1:5432:5432'
+    volumes:
+    - .data/postgres-data:/var/lib/postgresql/data
+    - .data/postgres-initdb:/docker-entrypoint-initdb-initdb.d
