@@ -1,10 +1,12 @@
 import { Body, Controller, Delete, Post, Req, UseGuards } from '@nestjs/common';
-import { SignupDto, SignupResponse } from './dto/signupDto';
+import { ApiTags, ApiBearerAuth } from '@nestjs/swagger';
+import { SignupDto, SignupResponse } from './dto/signupDto.dto';
 import { AuthService } from './auth.service';
-import { SigninDto, SigninResponse } from './dto/signinDto';
+import { SigninDto, SigninResponse } from './dto/signinDto.dto.';
 import { AuthGuard } from '@nestjs/passport';
 import express from 'express';
 
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -21,6 +23,7 @@ export class AuthController {
 
   @UseGuards(AuthGuard('jwt'))
   @Delete('delete')
+  @ApiBearerAuth()
   deleteAccount(@Req() request: express.Request) {
     const user = request.user as { userId: number; username: string };
 

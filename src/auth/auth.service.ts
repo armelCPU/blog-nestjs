@@ -7,9 +7,9 @@ import {
 } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 
-import { SignupDto, SignupResponse } from './dto/signupDto';
+import { SignupDto, SignupResponse } from './dto/signupDto.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
-import { SigninDto, SigninResponse } from './dto/signinDto';
+import { SigninDto, SigninResponse } from './dto/signinDto.dto.';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 

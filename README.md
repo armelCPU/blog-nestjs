@@ -85,3 +85,9 @@ pnpm i --save class-validator class-transformer
 ```
 pnpm i --save @nestjs/config
 ```
+
+
+### install Swagger
+```
+pnpm install --save @nestjs/swagger  # http://localhost:3000/api/docs#/auth/AuthController_signin
+```
