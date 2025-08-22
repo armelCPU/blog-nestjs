@@ -69,10 +69,22 @@ export class AuthService {
       secret: this.configService.get('SECRET_KEY'),
     });
     return {
+      sub: user.userId,
       token: token,
       email: user.email,
       name: user.name,
       username: user.username,
     };
+  }
+
+  async validateUser(payload: SigninResponse) {
+    const user = await this.prismaService.user.findUnique({
+      where: { email: payload.email },
+    });
+
+    if (!user) throw new UnauthorizedException('Not authorized');
+    // Delete password in the user to return here
+    Reflect.deleteProperty(user, 'password');
+    return user;
   }
 }

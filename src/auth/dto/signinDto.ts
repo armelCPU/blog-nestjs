@@ -10,6 +10,7 @@ export class SigninDto {
 }
 
 export interface SigninResponse {
+  sub: number;
   token: string;
   email: string;
   name: string;
